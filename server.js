@@ -18,7 +18,7 @@ app.get('/', function(req, res) {
 });
 
 //Database Connection
-mongoose.connect(process.env.MONGO_URL,{
+mongoose.connect('mongodb+srv://aestebance:73994757@cluster0.suqbq.mongodb.net/test?retryWrites=true&w=majority',{
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
@@ -53,7 +53,7 @@ app.post('/api/shorturl/new', bodyParser.urlencoded({extended: false}), function
   const inputUrl = req.body.url;
   let response = {};
   let short_url = 1;
-  var expression = new RegExp(/[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)?/gi);
+  var expression = new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/);
   if (!inputUrl.match(expression)){
     res.json({error: "Invalid URL"});
     return;
