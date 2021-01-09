@@ -18,7 +18,7 @@ app.get('/', function(req, res) {
 });
 
 //Database Connection
-mongoose.connect('mongodb+srv://aestebance:73994757@cluster0.suqbq.mongodb.net/test?retryWrites=true&w=majority',{
+mongoose.connect(process.env.MONGO_URL,{
   useNewUrlParser: true,
   useUnifiedTopology: true
 });
